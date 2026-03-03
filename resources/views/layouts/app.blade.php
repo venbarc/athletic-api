@@ -6,13 +6,14 @@
     <title>{{ $title ?? 'Athletic API' }}</title>
     <style>
         :root {
-            --bg: #eceef2;
-            --nav: #2743a8;
-            --nav-link: #d8e3ff;
-            --card: #f4f5f7;
-            --line: #cfd4de;
-            --text: #2d3748;
-            --muted: #5e6a7f;
+            --bg: #edf1f7;
+            --nav: #1f44a5;
+            --nav-2: #2a56c8;
+            --nav-link: #dce7ff;
+            --card: #ffffff;
+            --line: #d6deea;
+            --text: #263244;
+            --muted: #637289;
             --active: #1f4fcc;
             --white: #fff;
         }
@@ -21,37 +22,38 @@
 
         body {
             margin: 0;
-            font-family: "Segoe UI", Tahoma, sans-serif;
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
             color: var(--text);
-            background: var(--bg);
+            background: linear-gradient(180deg, #f3f6fb 0%, #ebf0f7 100%);
         }
 
         .topbar {
-            background: var(--nav);
+            background: linear-gradient(90deg, var(--nav) 0%, var(--nav-2) 100%);
             color: var(--white);
-            border-bottom: 1px solid #1f3588;
+            border-bottom: 1px solid #17378f;
+            box-shadow: 0 8px 24px rgba(19, 41, 105, 0.2);
         }
 
         .topbar-inner {
             width: min(1280px, 98vw);
             margin: 0 auto;
-            min-height: 70px;
+            min-height: 68px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            padding: 10px 8px;
+            padding: 10px 10px;
         }
 
         .brand-wrap {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 22px;
             flex-wrap: wrap;
         }
 
         .brand {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
             letter-spacing: 0.2px;
             line-height: 1;
@@ -67,9 +69,10 @@
         .main-nav a {
             color: var(--nav-link);
             text-decoration: none;
-            font-size: 22px;
+            font-size: 17px;
+            font-weight: 600;
             line-height: 1;
-            padding: 4px 0;
+            padding: 6px 0;
             border-bottom: 2px solid transparent;
         }
 
@@ -85,26 +88,27 @@
         }
 
         .download-select {
-            min-width: 290px;
-            border-radius: 10px;
-            border: 1px solid #17318a;
+            min-width: 280px;
+            border-radius: 9px;
+            border: 1px solid #193b99;
             background: #eef3ff;
-            color: #213460;
+            color: #203663;
             padding: 8px 10px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
         }
 
         .page {
-            width: min(1220px, 96vw);
-            margin: 26px auto;
+            width: min(1240px, 96vw);
+            margin: 22px auto;
         }
 
         .card {
             background: var(--card);
             border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 22px;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(22, 37, 69, 0.06);
         }
 
         .row {
@@ -117,15 +121,15 @@
 
         .section-title {
             margin: 0;
-            font-size: 34px;
-            line-height: 1.1;
-            color: #364153;
+            font-size: 50px;
+            line-height: 1.06;
+            color: #304158;
         }
 
         .section-subtitle {
-            margin: 6px 0 0;
+            margin: 8px 0 0;
             color: var(--muted);
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .kpi-grid {
@@ -136,7 +140,7 @@
         }
 
         .kpi {
-            background: #fff;
+            background: #f9fbff;
             border: 1px solid var(--line);
             border-radius: 10px;
             padding: 12px;
@@ -159,17 +163,21 @@
         .endpoint-group {
             margin-top: 14px;
             border: 1px solid var(--line);
-            border-radius: 10px;
-            background: #f0f2f5;
+            border-radius: 12px;
+            background: #f7faff;
             padding: 12px;
         }
 
         .endpoint-group h3 {
             margin: 0 0 10px;
-            color: #4b5567;
-            font-size: 16px;
+            color: #4b5870;
+            font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: .4px;
+            letter-spacing: .5px;
+        }
+
+        .endpoint-strip {
+            padding: 12px 12px 10px;
         }
 
         .endpoint-buttons {
@@ -178,34 +186,50 @@
             flex-wrap: wrap;
         }
 
+        .endpoint-buttons-inline {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding-bottom: 2px;
+        }
+
+        .endpoint-buttons-inline::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .endpoint-buttons-inline::-webkit-scrollbar-thumb {
+            background: #c8d3e6;
+            border-radius: 6px;
+        }
+
         .endpoint-btn {
-            border: 1px solid #bbc3d0;
+            border: 1px solid #b8c4db;
             border-radius: 8px;
-            background: #f6f7f9;
-            color: #3c4759;
-            padding: 8px 12px;
-            font-size: 16px;
+            background: #fff;
+            color: #3b4960;
+            padding: 7px 12px;
+            font-size: 15px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            white-space: nowrap;
         }
 
         .endpoint-btn.active {
             border-color: var(--active);
             background: #e8eeff;
             color: var(--active);
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .endpoint-btn.not-ready {
-            opacity: 0.58;
+            opacity: 0.6;
         }
 
         .endpoint-btn small {
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: .4px;
+            letter-spacing: .35px;
         }
 
         .table-tools {
@@ -214,7 +238,7 @@
             justify-content: space-between;
             gap: 10px;
             flex-wrap: wrap;
-            margin-top: 18px;
+            margin-top: 16px;
         }
 
         .left-tools,
@@ -226,7 +250,7 @@
         }
 
         .label {
-            font-size: 16px;
+            font-size: 14px;
             color: #3f4a5e;
         }
 
@@ -237,7 +261,7 @@
             background: #fff;
             padding: 8px 10px;
             min-width: 180px;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .btn {
@@ -246,7 +270,7 @@
             background: #e9efff;
             color: #1f4fcc;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 14px;
             padding: 8px 12px;
             cursor: pointer;
         }
@@ -256,7 +280,7 @@
         .stats {
             margin-top: 12px;
             color: #5b6678;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .table-wrap {
@@ -270,7 +294,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         th, td {
@@ -286,6 +310,7 @@
             font-weight: 600;
             text-transform: lowercase;
             letter-spacing: .2px;
+            font-size: 13px;
         }
 
         td.payload {
@@ -313,26 +338,39 @@
         }
 
         @media (max-width: 1100px) {
-            .brand { font-size: 26px; }
-            .main-nav a { font-size: 18px; }
+            .brand { font-size: 30px; }
+            .main-nav a { font-size: 15px; }
+            .section-title { font-size: 38px; }
             .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .download-select { min-width: 220px; }
+            .endpoint-buttons-inline { flex-wrap: wrap; overflow: visible; }
         }
 
         @media (max-width: 700px) {
             .topbar-inner { align-items: flex-start; }
-            .section-title { font-size: 26px; }
+            .section-title { font-size: 30px; }
             .kpi-grid { grid-template-columns: 1fr; }
             .download-form { width: 100%; }
             .download-select { width: 100%; }
             .main-nav { gap: 10px; }
-            .main-nav a { font-size: 16px; }
+            .main-nav a { font-size: 14px; }
+            .page { width: min(1240px, 98vw); }
         }
     </style>
 </head>
 <body>
 @php
     $exportGroups = $exportGroups ?? [];
+    $endpointCatalog = $endpointCatalog ?? [];
+
+    if ($endpointCatalog === [] && $exportGroups !== []) {
+        foreach ($exportGroups as $groupEndpoints) {
+            foreach ($groupEndpoints as $endpoint) {
+                $endpointCatalog[$endpoint['key']] = $endpoint;
+            }
+        }
+    }
+
     $selectedEndpointKey = $selectedEndpointKey ?? 'APPTS';
     $historyLink = route('pull-history.index', ['endpoint' => $selectedEndpointKey]);
     $apiLink = route('api.index', ['endpoint' => $selectedEndpointKey]);
@@ -352,15 +390,13 @@
         <form method="GET" action="{{ route('pull-history.export') }}" class="download-form">
             <select name="endpoint" class="download-select" onchange="if (this.value) { this.form.submit(); }">
                 <option value="">Download CSV...</option>
-                @foreach($exportGroups as $groupName => $endpoints)
-                    <optgroup label="{{ $groupName }}">
-                        @foreach($endpoints as $endpoint)
-                            <option value="{{ $endpoint['key'] }}" @disabled(! $endpoint['ready'])>
-                                {{ $endpoint['label'] }} CSV{{ $endpoint['ready'] ? '' : ' (Coming Soon)' }}
-                            </option>
-                        @endforeach
-                    </optgroup>
-                @endforeach
+                <optgroup label="API Endpoints">
+                    @foreach($endpointCatalog as $endpoint)
+                        <option value="{{ $endpoint['key'] }}" @disabled(! $endpoint['ready'])>
+                            {{ $endpoint['label'] }} CSV{{ $endpoint['ready'] ? '' : ' (Coming Soon)' }}
+                        </option>
+                    @endforeach
+                </optgroup>
             </select>
 
             @foreach(request()->except('endpoint', 'page') as $param => $value)

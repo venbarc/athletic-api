@@ -11,7 +11,7 @@
 
     .history-headline {
         margin: 0 0 6px;
-        font-size: 38px;
+        font-size: 42px;
         color: #2f3c52;
         line-height: 1.1;
     }
@@ -33,7 +33,7 @@
 
     .history-total {
         color: #56657d;
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .history-per-page {
@@ -41,47 +41,69 @@
         align-items: center;
         gap: 8px;
         color: #2d3748;
-        font-size: 30px;
+        font-size: 15px;
     }
 
     .history-select {
         border: 1px solid #9ca8bd;
-        border-radius: 4px;
-        padding: 4px 6px;
+        border-radius: 6px;
+        padding: 4px 8px;
         background: #fff;
         min-width: 70px;
-        font-size: 24px;
+        font-size: 14px;
     }
 
     .history-table-wrap {
         margin-top: 8px;
-        overflow: auto;
+        overflow-x: hidden;
     }
 
     .history-table {
         width: 100%;
         border-collapse: collapse;
-        min-width: 1260px;
-        font-size: 14px;
+        table-layout: fixed;
+        font-size: 13px;
     }
 
     .history-table th,
     .history-table td {
         border-bottom: 1px solid #dbe0e8;
-        padding: 12px 8px;
+        padding: 8px 6px;
         text-align: left;
         vertical-align: top;
+        white-space: normal;
+        line-height: 1.3;
+        word-break: break-word;
     }
 
     .history-table th {
         color: #4b5b73;
         font-weight: 600;
-        font-size: 31px;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: .25px;
     }
 
     .history-table td {
         color: #233249;
-        font-size: 28px;
+        font-size: 13px;
+    }
+
+    .history-table th:nth-child(1),
+    .history-table td:nth-child(1) {
+        width: 15%;
+    }
+
+    .history-table th:nth-child(4),
+    .history-table td:nth-child(4),
+    .history-table th:nth-child(5),
+    .history-table td:nth-child(5) {
+        width: 11%;
+    }
+
+    .history-table th:nth-child(12),
+    .history-table td:nth-child(12) {
+        width: 13%;
     }
 
     .status-pill {
@@ -89,11 +111,12 @@
         align-items: center;
         justify-content: center;
         border-radius: 999px;
-        padding: 4px 10px;
-        font-size: 22px;
+        padding: 3px 8px;
+        font-size: 12px;
         line-height: 1;
         font-weight: 700;
-        letter-spacing: .3px;
+        letter-spacing: .2px;
+        white-space: nowrap;
     }
 
     .status-success {
@@ -122,7 +145,7 @@
     }
 
     .history-error {
-        max-width: 320px;
+        max-width: 240px;
         white-space: normal;
         color: #a01f32;
     }
@@ -138,27 +161,13 @@
 
     @media (max-width: 1200px) {
         .history-headline {
-            font-size: 30px;
+            font-size: 34px;
         }
 
-        .history-table th {
-            font-size: 23px;
-        }
-
+        .history-table,
+        .history-table th,
         .history-table td {
-            font-size: 20px;
-        }
-
-        .history-per-page {
-            font-size: 22px;
-        }
-
-        .history-select {
-            font-size: 18px;
-        }
-
-        .status-pill {
-            font-size: 17px;
+            font-size: 12px;
         }
     }
 
@@ -168,27 +177,19 @@
         }
 
         .history-headline {
-            font-size: 26px;
-        }
-
-        .history-table th {
-            font-size: 17px;
-        }
-
-        .history-table td {
-            font-size: 15px;
+            font-size: 28px;
         }
 
         .history-per-page {
-            font-size: 17px;
+            font-size: 14px;
         }
 
         .history-select {
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .status-pill {
-            font-size: 13px;
+            font-size: 11px;
         }
     }
 </style>

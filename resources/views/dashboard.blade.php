@@ -4,8 +4,8 @@
 <div class="card">
     <div class="row">
         <div>
-            <h1 class="section-title">Provider Revenue (Athletic API)</h1>
-            <p class="section-subtitle">Switch between overview metrics and endpoint tables in one dashboard screen.</p>
+            <h1 class="section-title">Athletic API Dashboard</h1>
+            <p class="section-subtitle">View summary metrics and switch endpoint tables from one screen.</p>
         </div>
     </div>
 
@@ -46,30 +46,28 @@
             <div>Dump tracking table: <strong>{{ $dumpsTable }}</strong></div>
         </div>
     @else
-        @foreach($endpointGroups as $groupName => $endpoints)
-            <section class="endpoint-group">
-                <h3>{{ $groupName }}</h3>
-                <div class="endpoint-buttons">
-                    @foreach($endpoints as $endpoint)
-                        @php
-                            $classes = 'endpoint-btn';
-                            if ($endpoint['key'] === $selectedEndpointKey) {
-                                $classes .= ' active';
-                            }
-                            if (! $endpoint['ready']) {
-                                $classes .= ' not-ready';
-                            }
-                        @endphp
-                        <a href="{{ route('dashboard', array_merge(request()->except('page'), ['endpoint' => $endpoint['key'], 'tab' => 'table'])) }}" class="{{ $classes }}">
-                            {{ $endpoint['label'] }}
-                            @if(! $endpoint['ready'])
-                                <small>soon</small>
-                            @endif
-                        </a>
-                    @endforeach
-                </div>
-            </section>
-        @endforeach
+        <section class="endpoint-group endpoint-strip">
+            <h3>API Endpoints</h3>
+            <div class="endpoint-buttons endpoint-buttons-inline">
+                @foreach($endpointCatalog as $endpoint)
+                    @php
+                        $classes = 'endpoint-btn';
+                        if ($endpoint['key'] === $selectedEndpointKey) {
+                            $classes .= ' active';
+                        }
+                        if (! $endpoint['ready']) {
+                            $classes .= ' not-ready';
+                        }
+                    @endphp
+                    <a href="{{ route('dashboard', array_merge(request()->except('page'), ['endpoint' => $endpoint['key'], 'tab' => 'table'])) }}" class="{{ $classes }}">
+                        {{ $endpoint['label'] }}
+                        @if(! $endpoint['ready'])
+                            <small>soon</small>
+                        @endif
+                    </a>
+                @endforeach
+            </div>
+        </section>
 
         <div class="table-tools">
             <div class="left-tools">

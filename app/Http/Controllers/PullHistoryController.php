@@ -528,17 +528,17 @@ class PullHistoryController extends Controller
         return [
             'APPTS' => [
                 'label' => 'Available Blocks',
-                'group' => 'Appointment APIs',
+                'group' => 'API Endpoints',
                 'tables' => ['athletic_appts', 'athelas_appts'],
             ],
             'ELIGIBILITY_CHECKS' => [
                 'label' => 'Eligibility Checks',
-                'group' => 'Eligibility APIs',
+                'group' => 'API Endpoints',
                 'tables' => ['athletic_eligibility_checks', 'athelas_eligibility_checks'],
             ],
             'PRIOR_AUTHS' => [
                 'label' => 'Prior Auths',
-                'group' => 'Prior Auth APIs',
+                'group' => 'API Endpoints',
                 'tables' => ['athletic_prior_auths', 'athelas_prior_auths'],
             ],
         ];

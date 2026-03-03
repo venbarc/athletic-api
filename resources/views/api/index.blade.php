@@ -4,35 +4,33 @@
 <div class="card">
     <div class="row">
         <div>
-            <h1 class="section-title">{{ $selectedEndpoint['label'] }} (Athletic API)</h1>
-            <p class="section-subtitle">Endpoint data viewer for available export endpoints.</p>
+            <h1 class="section-title">API Data Explorer (Athletic API)</h1>
+            <p class="section-subtitle">Choose an endpoint and browse pulled records with export support.</p>
         </div>
     </div>
 
-    @foreach($endpointGroups as $groupName => $endpoints)
-        <section class="endpoint-group">
-            <h3>{{ $groupName }}</h3>
-            <div class="endpoint-buttons">
-                @foreach($endpoints as $endpoint)
-                    @php
-                        $classes = 'endpoint-btn';
-                        if ($endpoint['key'] === $selectedEndpointKey) {
-                            $classes .= ' active';
-                        }
-                        if (! $endpoint['ready']) {
-                            $classes .= ' not-ready';
-                        }
-                    @endphp
-                    <a href="{{ route('api.index', array_merge(request()->except('page'), ['endpoint' => $endpoint['key']])) }}" class="{{ $classes }}">
-                        {{ $endpoint['label'] }}
-                        @if(! $endpoint['ready'])
-                            <small>soon</small>
-                        @endif
-                    </a>
-                @endforeach
-            </div>
-        </section>
-    @endforeach
+    <section class="endpoint-group endpoint-strip">
+        <h3>API Endpoints</h3>
+        <div class="endpoint-buttons endpoint-buttons-inline">
+            @foreach($endpointCatalog as $endpoint)
+                @php
+                    $classes = 'endpoint-btn';
+                    if ($endpoint['key'] === $selectedEndpointKey) {
+                        $classes .= ' active';
+                    }
+                    if (! $endpoint['ready']) {
+                        $classes .= ' not-ready';
+                    }
+                @endphp
+                <a href="{{ route('api.index', array_merge(request()->except('page'), ['endpoint' => $endpoint['key']])) }}" class="{{ $classes }}">
+                    {{ $endpoint['label'] }}
+                    @if(! $endpoint['ready'])
+                        <small>soon</small>
+                    @endif
+                </a>
+            @endforeach
+        </div>
+    </section>
 
     <div class="table-tools">
         <div class="left-tools">
